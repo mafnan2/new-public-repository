@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   }, []);
 
   async function getBallots() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_LOCAL_URL}ballots`);
+    const response = await fetch(`http://localhost:3000/api/ballots`);
     const movies = await response.json();
     setCategories(movies.items);
   }
@@ -40,10 +40,11 @@ const Home: NextPage = () => {
         />
       </Head>
 
+
+
+
       <div className={"mx-auto container px-5 xl:px-0 pt-10"}>
-        <h1 className="text-center text-white font-bold text-2xl pb-10">
-          Awards {date}
-        </h1>
+      <h1 className="text-center text-white font-bold text-2xl pb-10">Awards {date}</h1>
         {categories &&
           categories?.map((item: nomineeType, idx: number) => {
             return (
