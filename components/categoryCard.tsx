@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { nomineeType } from "../interface/nominee";
 
 interface CategoryCardProps {
@@ -20,11 +20,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   item,
   idx,
 }) => {
-  const getSelectedItem = (id: string | any) => {
+  const getSelectedItem = (value: nomineeType) => {
     return nominee.some((item: nomineeType) => {
-      return item.id === id;
+      return item.id === value.id;
     });
   };
+
+  const [parentId, setParentId] = useState<string>("");
+
   const selectNominee = (value: category, parentId: string | undefined) => {
     let array = structuredClone(nominee);
     let findNominee = nominee.find((item: nomineeType) => {
@@ -45,6 +48,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
       if (!findCategory) {
         array.push({ ...value, parentId: parentId });
         setNominee(array);
+      } else {
       }
     }
   };
@@ -63,15 +67,20 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             <div
               onClick={() => selectNominee(_item, item.id)}
               className={`${
-                getSelectedItem(_item.id)
-                  ? "bg-[#34AC9C] text-[#CCCCCC] scale-95 md:scale-90"
-                  : "bg-basic text-white hover:bg-[#34AC9C] md:hover:scale-105"
-              }  p-4  rounded-md   transition-all duration-200 transform ease-in-out group cursor-pointer `}
+                nominee.length === 0
+                  ? "cursor-pointer bg-basic text-white hover:text-[#CCCCCC] hover:bg-[#34AC9C] md:hover:scale-105"
+                  : nominee.some(
+                      (jex: nomineeType) =>
+                        jex.parentId === item.id && jex.id !== _item.id
+                    )
+                  ? "bg-basic text-white  cursor-not-allowed"
+                  : getSelectedItem(_item)
+                  ? "bg-[#34AC9C] text-[#CCCCCC] scale-95 md:scale-90 cursor-pointer"
+                  : "bg-basic text-white cursor-pointer"
+              }  p-4 rounded-md transition-all duration-200 transform ease-in-out group `}
               key={_item.id}
             >
-              <p className="group-hover:text-[#CCCCCC] transition-all duration-200 ease-in-out font-medium text-base">
-                {_item.title}
-              </p>
+              <p className=" font-medium text-base">{_item.title}</p>
               <img
                 className="max-h-[450px] object-cover object-center w-full mt-2"
                 alt={_item.title}
