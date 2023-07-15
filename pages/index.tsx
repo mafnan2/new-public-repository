@@ -40,12 +40,11 @@ const Home: NextPage = () => {
         />
       </Head>
 
-
-
-
       <div className={"mx-auto container px-5 xl:px-0 pt-10"}>
-      <h1 className="text-center text-white font-bold text-2xl pb-10">Awards {date}</h1>
-        {categories &&
+        <h1 className="text-center text-white font-bold text-2xl pb-10">
+          Awards {date}
+        </h1>
+        {categories ? (
           categories?.map((item: nomineeType, idx: number) => {
             return (
               <CategoryCard
@@ -56,7 +55,12 @@ const Home: NextPage = () => {
                 key={idx}
               />
             );
-          })}
+          })
+        ) : (
+          <div className="fixed flex items-center justify-center flex-col inset-0 w-full h-full">
+            <img alt="loading" className="" src="/loading.svg" />
+          </div>
+        )}
       </div>
 
       {/* ballots button */}
