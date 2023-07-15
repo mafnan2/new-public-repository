@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <h1 align="center">
   Master Ventures
@@ -108,3 +109,6 @@ curl -X GET \
   - Nominee card background hover / submit button background hover: ![#34AC9C](https://via.placeholder.com/15/#34AC9C/000000?text=+) `#34AC9C`
 
 > **Good luck and if you have any questions, please reach out to us!**
+=======
+# new-public-repository
+>>>>>>> a86c36769b2256fd5f337e1872eb8300d664baab
