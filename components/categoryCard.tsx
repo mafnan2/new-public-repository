@@ -33,7 +33,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
     });
     let findCategory = nominee.find((item: nomineeType) => {
       return item.parentId === parentId;
-    });
+    });  
     let selectedItem: string | undefined = "";
     if (findNominee) {
       setNominee(
