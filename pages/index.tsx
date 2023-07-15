@@ -40,10 +40,14 @@ const Home: NextPage = () => {
         />
       </Head>
 
+
+
       <div className={"mx-auto container px-5 xl:px-0 pt-10"}>
         <h1 className="text-center text-white font-bold text-2xl pb-10">
           Awards {date}
         </h1>
+
+        {/* ballots cards */}
         {categories ? (
           categories?.map((item: nomineeType, idx: number) => {
             return (
