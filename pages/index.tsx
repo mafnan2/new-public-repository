@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   }, []);
 
   async function getBallots() {
-    const response = await fetch(`http://localhost:3000/api/ballots`);
+    const response = await fetch(`/api/ballots`);
     const movies = await response.json();
     setCategories(movies.items);
   }
