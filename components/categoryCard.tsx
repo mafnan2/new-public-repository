@@ -27,7 +27,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
   };
 
   const selectNominee = (value: category, parentId: string | undefined) => {
-    let array = structuredClone(Array.isArray(nominee) ? nominee : []);
+    let array = structuredClone([...nominee]);
     let findNominee = nominee.find((item: nomineeType) => {
       return item.id === value.id;
     });
